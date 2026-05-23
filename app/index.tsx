@@ -4,6 +4,7 @@ import { useRouter } from 'expo-router';
 import { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { generalStyles } from './styles/generalStyles';
 
 export default function SplashScreen() {
     const router = useRouter();
@@ -17,7 +18,7 @@ export default function SplashScreen() {
     }, []);
 
     return (
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={generalStyles.container}>
             <LinearGradient
                 colors={['#0B2545', '#134074']}
                 locations={[0.5, 1.0]}

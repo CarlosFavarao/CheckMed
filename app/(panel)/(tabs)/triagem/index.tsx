@@ -1,3 +1,4 @@
+import { generalStyles } from '@/app/styles/generalStyles';
 import MenuButton from '@/components/buttons/MenuButton';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Entypo from '@expo/vector-icons/Entypo';
@@ -31,16 +32,16 @@ export default function App() {
           <Text style={styles.textoPergunta}>{pergunta}</Text>
         </View>
         <View style={[styles.alternativas, { backgroundColor: cont === 0 ? "#8DA9C4" : "#3E6B96" }]}>
-          <TouchableOpacity onPress={escolher}>{opcaoA}</TouchableOpacity>
+          <TouchableOpacity onPress={escolher}><Text>{opcaoA}</Text></TouchableOpacity>
         </View>
         <View style={[styles.alternativas, { backgroundColor: cont === 0 ? "#8DA9C4" : "#3E6B96" }]}>
-          <TouchableOpacity onPress={escolher}>{opcaoB}</TouchableOpacity>
+          <TouchableOpacity onPress={escolher}><Text>{opcaoB}</Text></TouchableOpacity>
         </View>
         <View style={[styles.alternativas, { backgroundColor: cont === 0 ? "#8DA9C4" : "#3E6B96" }]}>
-          <TouchableOpacity onPress={escolher}>{opcaoC}</TouchableOpacity>
+          <TouchableOpacity onPress={escolher}><Text>{opcaoC}</Text></TouchableOpacity>
         </View>
         <View style={[styles.alternativas, { backgroundColor: cont === 0 ? "#8DA9C4" : "#3E6B96" }]}>
-          <TouchableOpacity onPress={escolher}>{opcaoD}</TouchableOpacity>
+          <TouchableOpacity onPress={escolher}><Text>{opcaoD}</Text></TouchableOpacity>
         </View>
         <View style={styles.setas}>
           <View>
@@ -57,8 +58,8 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
+    <SafeAreaView style={generalStyles.container}>
+      <View style={generalStyles.container}>
         <View style={styles.cabecalho}>
           <MenuButton color="black"/>
           <View style={styles.logo}>
@@ -91,11 +92,6 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ecf0f1',
-  },
-
   cabecalho: {
     flexDirection: "row",
     justifyContent: "space-between",

@@ -1,47 +1,21 @@
-import MenuButton from '@/components/buttons/MenuButton';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import MainTopBar from '@/components/topBar/MainTopBar';
+import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { generalStyles } from '../styles/generalStyles';
 
 
 export default function Sobre() {
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
-        <View style={styles.cabecalho}>
-          <MenuButton color="white" />
-          <View style={styles.logo}>
-            <Text style={styles.textoLogo}>CheckMed</Text>
-            <FontAwesome6 name="stethoscope" size={24} color="white" />
-          </View>
-          <FontAwesome name="user-circle-o" size={24} color="white" />
-        </View>
+    <SafeAreaView style={generalStyles.container}>
+      <View style={generalStyles.container}>
+        <MainTopBar/>
 
         <View style={styles.sobre}>
           <Text style={styles.titulo}>Sobre Nós</Text>
           <Text style={styles.textoSobre}>O CheckMed nasce da união entre tecnologia e cuidado humano. Desenvolvido como parte da Atividade de Estudo Programada (AEP) da Unicesumar. </Text>
           <Text style={styles.textoSobre}>Nosso objetivo é transformar a triagem hospitalar por meio da Inteligência Artificial.</Text>
           <Text style={styles.textoSobre}>Alinhado ao ODS 3 da ONU (Saúde e Bem-Estar), o app utiliza o Protocolo de Manchester para oferecer uma orientação rápida e segura, ajudando a reduzir filas e priorizar o que realmente importa: a vida.</Text>
-        </View>
-
-        <View style={styles.rodape}>
-          <View style={styles.opcao}>
-            <TouchableOpacity><FontAwesome5 name="hospital" size={24} color="white" /></TouchableOpacity>
-            <Text style={styles.texto}>Hospitais</Text>
-          </View>
-          <View style={styles.opcao}>
-            <TouchableOpacity style={styles.triagem}><Ionicons name="medical" size={30} color="#134074" /></TouchableOpacity>
-            <Text style={styles.texto}>Nova Triagem</Text>
-          </View>
-          <View style={styles.opcao}>
-            <TouchableOpacity><FontAwesome name="user-circle-o" size={24} color="white" /></TouchableOpacity>
-            <Text style={styles.texto}>Perfil</Text>
-          </View>
-
         </View>
       </View>
     </SafeAreaView>

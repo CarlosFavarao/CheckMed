@@ -1,3 +1,4 @@
+import { generalStyles } from '@/app/styles/generalStyles';
 import MenuButton from '@/components/buttons/MenuButton';
 import Feather from '@expo/vector-icons/Feather';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -8,9 +9,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 export default function Perfil() {
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={generalStyles.container}>
 
-      <View style={styles.container}>
+      <View style={generalStyles.container}>
         <View style={styles.cabecalho}>
           <MenuButton color="white"/>
           <View style={styles.logo}>
@@ -57,11 +58,6 @@ export default function Perfil() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ecf0f1',
-  },
-
   cabecalho: {
     flexDirection: "row",
     justifyContent: "space-between",

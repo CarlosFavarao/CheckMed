@@ -1,13 +1,22 @@
 import { FontAwesome, FontAwesome5, Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function TabsLayout() {
+  const insets = useSafeAreaInsets()
+
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarStyle: styles.rodape,
+        tabBarStyle: [
+          styles.rodape, 
+          {
+            height: 70 + insets.bottom,
+            paddingBottom: 10 + insets.bottom
+          }
+      ],
         tabBarShowLabel: true,
         tabBarActiveTintColor: '#134074',
         tabBarInactiveTintColor: '#FFFFFF',

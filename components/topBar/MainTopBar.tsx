@@ -1,3 +1,4 @@
+import { iconsSize } from "@/app/styles/generalStyles";
 import { Feather, FontAwesome6 } from "@expo/vector-icons";
 import { StyleSheet, Text, View } from "react-native";
 import MenuButton from "../buttons/MenuButton";
@@ -10,7 +11,7 @@ export default function MainTopBar() {
                 <Text style={styles.textoLogo}>CheckMed</Text>
                 <FontAwesome6 name="stethoscope" size={24} color="white" />
             </View>
-            <Feather name="edit" size={24} color="white" />
+            <Feather name="edit" size={iconsSize - 2} color="white" />
         </View>
     )
 }

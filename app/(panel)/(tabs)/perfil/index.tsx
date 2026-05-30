@@ -1,4 +1,4 @@
-import { generalStyles } from '@/app/styles/generalStyles';
+import { generalStyles, iconsSize } from '@/app/styles/generalStyles';
 import MenuButton from '@/components/buttons/MenuButton';
 import Feather from '@expo/vector-icons/Feather';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -18,7 +18,7 @@ export default function Perfil() {
             <Text style={styles.textoLogo}>CheckMed</Text>
             <FontAwesome6 name="stethoscope" size={24} color="white" />
           </View>
-          <Feather name="edit" size={24} color="white" />
+          <Feather name="edit" size={iconsSize - 2} color="white" />
         </View>
 
         <View style={styles.usuario}>

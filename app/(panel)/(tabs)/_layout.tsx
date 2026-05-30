@@ -54,6 +54,13 @@ export default function TabsLayout() {
           ),
         }}
       />
+
+      <Tabs.Screen
+        name="triagem/resultado/tipo-emergencia"
+        options={{
+          href: null
+        }}
+      />
     </Tabs>
   );
 }

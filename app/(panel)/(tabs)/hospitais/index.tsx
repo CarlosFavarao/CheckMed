@@ -1,8 +1,9 @@
 import { generalStyles } from '@/app/styles/generalStyles';
-import MainTopBar from '@/components/topBar/MainTopBar';
+import { NoEditTopBar } from '@/components/topBar/MainTopBar';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useRouter } from 'expo-router';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const MOCK_HOSPITAIS = [
@@ -57,17 +58,15 @@ function Hospital({ nome, distancia, tempo, onPress }: HospitalProps) {
 }
 
 export default function Hospitais() {
-    const lidarCliqueHospital = (nomeHospital: string) => {
-        Alert.alert(
-            "Hospital Selecionado",
-            `Abrindo detalhes e rotas para:\n${nomeHospital}`
-        );
+    const router = useRouter();
+    const lidarCliqueHospital = () => {
+        router.push('/hospitais/hospital');
     };
 
     return (
-        <SafeAreaView style={generalStyles.container}>
+        <SafeAreaView style={generalStyles.containerBlue} edges={['top']}>
             <View style={generalStyles.container}>
-                <MainTopBar/>
+                <NoEditTopBar/>
 
                 <View style={styles.conteudo}>
                     <View style={styles.hospital}>
@@ -87,7 +86,7 @@ export default function Hospitais() {
                                     nome={hospital.nome}
                                     distancia={hospital.distancia}
                                     tempo={hospital.tempo}
-                                    onPress={() => lidarCliqueHospital(hospital.nome)}
+                                    onPress={() => lidarCliqueHospital()}
                                 />
                             ))}
 

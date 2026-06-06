@@ -7,4 +7,9 @@ export const generalStyles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#ecf0f1',
     },
+
+    containerBlue: {
+        flex: 1,
+        backgroundColor: '#13315C',
+    },
 })

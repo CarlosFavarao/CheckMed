@@ -2,12 +2,11 @@ import { generalStyles } from '@/app/styles/generalStyles';
 import MenuButton from '@/components/buttons/MenuButton';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Entypo from '@expo/vector-icons/Entypo';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import { useRouter } from 'expo-router';
 import React, { useState } from "react";
-import { Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const MOCK_PERGUNTAS = [
@@ -43,7 +42,7 @@ const MOCK_PERGUNTAS = [
 
 export default function App() {
   const [indiceAtual, setIndiceAtual] = useState(0);
-  const router = useRouter()
+  const router = useRouter();
 
   const ligarEmergencia = () => {
     Linking.openURL('tel:192');
@@ -53,7 +52,7 @@ export default function App() {
     if (indiceAtual < MOCK_PERGUNTAS.length - 1) {
       setIndiceAtual(indiceAtual + 1);
     } else {
-      router.push('/triagem/resultado/tipo-emergencia')
+      router.push('/triagem/resultado/tipo-emergencia');
     }
   }
 
@@ -89,23 +88,25 @@ export default function App() {
         </TouchableOpacity>
 
         <View style={styles.setas}>
-          <View style={{ opacity: isPrimeira ? 0.3 : 1 }}>
+          <View style={{ alignItems: 'center' }}>
             <TouchableOpacity onPress={onVoltar} disabled={isPrimeira}>
-              <AntDesign name="backward" size={40} color="#C4C4C4" />
+              <AntDesign name="backward" size={40} color={isPrimeira ? "#C4C4C4" : "#13315C"} />
             </TouchableOpacity>
-            <Text style={styles.textoSeta}>Voltar</Text>
+            <Text style={[styles.textoSeta, { color: isPrimeira ? "#C4C4C4" : "#13315C" }]}>Voltar</Text>
           </View>
 
-          <View style={{ opacity: isUltima ? 0.3 : 1 }}>
+          <View style={{ alignItems: 'center' }}>
             <TouchableOpacity onPress={onAvancar} disabled={isUltima}>
-              <Entypo name="controller-next" size={40} color="#C4C4C4" />
+              <Entypo name="controller-next" size={40} color={isUltima ? "#C4C4C4" : "#13315C"} />
             </TouchableOpacity>
-            <Text style={styles.textoSeta}>Próximo</Text>
+            <Text style={[styles.textoSeta, { color: isUltima ? "#C4C4C4" : "#13315C" }]}>Próximo</Text>
           </View>
         </View>
       </View>
     );
   }
+
+  const progressoPorcentagem = ((indiceAtual + 1) / MOCK_PERGUNTAS.length) * 100;
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -116,7 +117,11 @@ export default function App() {
             <Text style={styles.textoLogo}>CheckMed</Text>
             <FontAwesome6 name="stethoscope" size={24} color="black" />
           </View>
-          <FontAwesome name="user-circle-o" size={24} color="black" />
+          
+          <Image 
+            source={require('@/assets/images/profile.jpg')} 
+            style={styles.fotoPerfil}
+          />
         </View>
         
         <View style={{ flex: 1 }}>
@@ -125,6 +130,10 @@ export default function App() {
               <Text style={styles.textoLigar}>Ligar 192</Text>
               <FontAwesome5 name="phone" size={20} color="white" />
             </TouchableOpacity>
+          </View>
+
+          <View style={styles.progressContainer}>
+            <View style={[styles.progressFill, { width: `${progressoPorcentagem}%` }]} />
           </View>
 
           <View style={styles.questionario} >
@@ -170,6 +179,15 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
 
+  fotoPerfil: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: '#ffffff',
+    backgroundColor: '#CACACA'
+  },
+
   conteudo: {
     paddingHorizontal: 15,
     marginTop: 10,
@@ -193,6 +211,20 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
     fontSize: 18
+  },
+
+  progressContainer: {
+    height: 10,
+    backgroundColor: "#E5E5E5",
+    borderRadius: 5,
+    marginHorizontal: 15,
+    marginTop: 25,
+    overflow: "hidden",
+  },
+
+  progressFill: {
+    height: "100%",
+    backgroundColor: "#13315C",
   },
 
   questionario: {
@@ -260,7 +292,8 @@ const styles = StyleSheet.create({
   },
 
   textoSeta: {
-    color: "#C4C4C4",
-    textAlign: "center"
+    textAlign: "center",
+    fontWeight: "bold",
+    marginTop: 5
   }
 })

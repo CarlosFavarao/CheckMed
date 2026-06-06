@@ -1,6 +1,6 @@
 import { iconsSize } from "@/app/styles/generalStyles";
 import { Feather, FontAwesome6 } from "@expo/vector-icons";
-import { StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import MenuButton from "../buttons/MenuButton";
 
 export default function MainTopBar() {
@@ -12,6 +12,22 @@ export default function MainTopBar() {
                 <FontAwesome6 name="stethoscope" size={24} color="white" />
             </View>
             <Feather name="edit" size={iconsSize - 2} color="white" />
+        </View>
+    )
+}
+
+export function NoEditTopBar(){
+    return (
+        <View style={styles.cabecalho}>
+            <MenuButton color="white" />
+            <View style={styles.logo}>
+                <Text style={styles.textoLogo}>CheckMed</Text>
+                <FontAwesome6 name="stethoscope" size={24} color="white" />
+            </View>
+             <Image
+                source={require('@/assets/images/profile.jpg')} 
+                style={styles.fotoPerfil}
+            />
         </View>
     )
 }
@@ -36,6 +52,15 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 20,
         color: "white",
+    },
+
+    fotoPerfil: {
+        width: 32,
+        height: 32,
+        borderRadius: 16,
+        borderWidth: 1,
+        borderColor: '#ffffff',
+        backgroundColor: '#CACACA'
     },
 
 });

@@ -1,16 +1,13 @@
 import { generalStyles, iconsSize } from '@/app/styles/generalStyles';
 import MenuButton from '@/components/buttons/MenuButton';
 import Feather from '@expo/vector-icons/Feather';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Perfil() {
-
   return (
-    <SafeAreaView style={generalStyles.container}>
-
+    <SafeAreaView style={generalStyles.containerBlue} edges={['top']}>
       <View style={generalStyles.container}>
         <View style={styles.cabecalho}>
           <MenuButton color="white"/>
@@ -22,8 +19,13 @@ export default function Perfil() {
         </View>
 
         <View style={styles.usuario}>
-          <View style={styles.perfil}><FontAwesome name="user-circle-o" size={80} color="black" /></View>
-          <Text style={styles.nomeUsuario}>Usuário</Text>
+          <View style={styles.perfil}>
+            <Image 
+              source={require('@/assets/images/profile.jpg')} 
+              style={styles.fotoPerfil}
+            />
+          </View>
+          <Text style={styles.nomeUsuario}>Heloísa</Text>
         </View>
 
         <View style={styles.dados}>
@@ -86,15 +88,27 @@ const styles = StyleSheet.create({
     marginTop: -45,
     backgroundColor: "white",
     width: 80,
+    height: 80,
+    justifyContent: "center",
     alignItems: "center",
-    borderRadius: 200,
+    borderRadius: 40,
     shadowRadius: 4,
     shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.3,
+    elevation: 5,
+  },
+
+
+  fotoPerfil: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
   },
 
   nomeUsuario: {
     fontSize: 25,
+    fontWeight: "bold",
+    marginTop: 10,
   },
 
   dados: {
@@ -105,23 +119,20 @@ const styles = StyleSheet.create({
   },
 
   dado: {
+    marginHorizontal: 10,
     gap: 8
   },
 
   info: {
+    fontSize: 17,
     fontWeight: "bold"
   },
 
   resposta: {
-    fontSize: 15,
+    fontSize: 17,
     fontFamily: "Arial",
-    color: "grey"
-  },
-
-  rodape: {
-    backgroundColor: "#8DA9C4",
-    flexDirection: "row",
-    justifyContent: "space-around"
+    color: "grey",
+    marginBottom: 10,
   },
 
   texto: {
@@ -131,22 +142,4 @@ const styles = StyleSheet.create({
   textoPerfil: {
     color: "#134074"
   },
-
-  opcao: {
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginTop: 5,
-    marginBottom: 3,
-  },
-
-  triagem: {
-    height: 50,
-    width: 50,
-    backgroundColor: "#E5E5E5",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 35,
-    marginTop: -20,
-  },
-
 });

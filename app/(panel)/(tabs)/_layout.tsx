@@ -61,6 +61,13 @@ export default function TabsLayout() {
           href: null
         }}
       />
+
+      <Tabs.Screen
+        name="hospitais/hospital/index"
+        options={{
+          href: null
+        }}
+      />
     </Tabs>
   );
 }
